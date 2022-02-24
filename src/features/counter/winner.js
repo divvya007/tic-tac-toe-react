@@ -6,12 +6,10 @@ export default function Winner(inputArray) {
       inputArray[0][2] === "X") ||
     (inputArray[0][0] === "O" &&
       inputArray[0][1] === "O" &&
-      inputArray[0][2] === "O") ||
-    (inputArray[0][0] !== null &&
-      inputArray[0][1] !== null &&
-      inputArray[0][2] !== null)
+      inputArray[0][2] === "O")
   ) {
     result = 1;
+    return result;
   }
   if (
     (inputArray[1][0] === "X" &&
@@ -19,12 +17,10 @@ export default function Winner(inputArray) {
       inputArray[1][2] === "X") ||
     (inputArray[1][0] === "O" &&
       inputArray[1][1] === "O" &&
-      inputArray[1][2] === "O") ||
-    (inputArray[1][0] !== null &&
-      inputArray[1][1] !== null &&
-      inputArray[1][2] !== null)
+      inputArray[1][2] === "O")
   ) {
     result = 2;
+    return result;
   }
   if (
     (inputArray[2][0] === "X" &&
@@ -32,12 +28,10 @@ export default function Winner(inputArray) {
       inputArray[2][2] === "X") ||
     (inputArray[2][0] === "O" &&
       inputArray[2][1] === "O" &&
-      inputArray[2][2] === "O") ||
-    (inputArray[2][0] !== null &&
-      inputArray[2][1] !== null &&
-      inputArray[2][2] !== null)
+      inputArray[2][2] === "O")
   ) {
     result = 3;
+    return result;
   }
   if (
     (inputArray[0][0] === "X" &&
@@ -45,12 +39,10 @@ export default function Winner(inputArray) {
       inputArray[2][0] === "X") ||
     (inputArray[0][0] === "O" &&
       inputArray[1][0] === "O" &&
-      inputArray[2][0] === "O") ||
-    (inputArray[0][0] !== null &&
-      inputArray[1][0] !== null &&
-      inputArray[2][0] !== null)
+      inputArray[2][0] === "O")
   ) {
     result = 4;
+    return result;
   }
   if (
     (inputArray[0][1] === "X" &&
@@ -58,12 +50,10 @@ export default function Winner(inputArray) {
       inputArray[2][1] === "X") ||
     (inputArray[0][1] === "O" &&
       inputArray[1][1] === "O" &&
-      inputArray[2][1] === "O") ||
-    (inputArray[0][1] !== null &&
-      inputArray[1][1] !== null &&
-      inputArray[2][1] !== null)
+      inputArray[2][1] === "O")
   ) {
     result = 5;
+    return result;
   }
   if (
     (inputArray[0][2] === "X" &&
@@ -71,12 +61,10 @@ export default function Winner(inputArray) {
       inputArray[2][2] === "X") ||
     (inputArray[0][2] === "O" &&
       inputArray[1][2] === "O" &&
-      inputArray[2][2] === "O") ||
-    (inputArray[0][2] !== null &&
-      inputArray[1][2] !== null &&
-      inputArray[2][2] !== null)
+      inputArray[2][2] === "O")
   ) {
     result = 6;
+    return result;
   }
   if (
     (inputArray[0][0] === "X" &&
@@ -84,12 +72,10 @@ export default function Winner(inputArray) {
       inputArray[2][2] === "X") ||
     (inputArray[0][0] === "O" &&
       inputArray[1][1] === "O" &&
-      inputArray[2][2] === "O") ||
-    (inputArray[0][0] !== null &&
-      inputArray[1][1] !== null &&
-      inputArray[2][2] !== null)
+      inputArray[2][2] === "O")
   ) {
     result = 7;
+    return result;
   }
   if (
     (inputArray[0][2] === "X" &&
@@ -97,12 +83,9 @@ export default function Winner(inputArray) {
       inputArray[2][0] === "X") ||
     (inputArray[0][2] === "O" &&
       inputArray[1][1] === "O" &&
-      inputArray[2][0] === "O") ||
-    (inputArray[0][2] !== null &&
-      inputArray[1][1] !== null &&
-      inputArray[2][0] !== null)
+      inputArray[2][0] === "O")
   ) {
     result = 8;
+    return result;
   }
-  return result;
 }

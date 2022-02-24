@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { playerMove } from "./Slice";
+import { playerMove, resetButton } from "./Slice";
 import { useSelector } from "react-redux";
 
 const TileContainer = styled.div`
@@ -16,6 +16,10 @@ export default function Tile({ row, column }) {
   const value = useSelector((state) => state.grid.gridFrame[row][column]);
   const win = useSelector((state) => state.grid.winner);
   const strike = useSelector((state) => state.grid.strikeType);
+  if (win) {
+    dispatch(resetButton());
+    alert(`player ${value} won`);
+  }
 
   return (
     <>
