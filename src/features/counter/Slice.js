@@ -33,9 +33,20 @@ const slice = createSlice({
       state.strikeType = Winner(state.gridFrame);
       state.winner = state.strikeType !== null ? !state.winner : state.winner;
     },
+    resetButton: (state) => {
+      state.gridFrame = state.gridFrame.map((item) => {
+        if (item) {
+          return item.map((value) => {
+            value = null;
+            return value;
+          });
+        }
+        return item;
+      });
+    },
   },
 });
 
-export const { playerMove } = slice.actions;
+export const { playerMove, resetButton } = slice.actions;
 
 export default slice.reducer;

@@ -1,6 +1,8 @@
 import Tile from "./Tile";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { resetButton } from "./Slice";
+
 const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -20,6 +22,7 @@ const TicTacToeBoxContainer = styled.div`
 
 export function Grid() {
   const move = useSelector((state) => state.grid.nextMove);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -36,7 +39,13 @@ export function Grid() {
           <Tile row={2} column={2} />
         </Container>
         <NextMoveContainer>your next move is: {move}</NextMoveContainer>
-        <button>RESET GAME</button>
+        <button
+          onClick={() => {
+            dispatch(resetButton());
+          }}
+        >
+          RESET GAME
+        </button>
       </TicTacToeBoxContainer>
     </>
   );
