@@ -8,13 +8,18 @@ const TileContainer = styled.div`
   width: 70px;
   height: 90px;
   color: red;
+  text-decoration: "none";
 `;
 export default function Tile({ row, column }) {
   const dispatch = useDispatch();
 
   const value = useSelector((state) => state.grid.gridFrame[row][column]);
   const win = useSelector((state) => state.grid.winner);
+  const strike = useSelector((state) => state.grid.strikeType);
 
+  if (win === true) {
+    console.log(`${value} won`);
+  }
   return (
     <>
       <TileContainer

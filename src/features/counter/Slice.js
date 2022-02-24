@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 // import counterSlice from "./counterSlice";
+import Winner from "./winner";
 const initialState = {
   gridFrame: [
     [null, null, null],
@@ -8,6 +9,7 @@ const initialState = {
   ],
   nextMove: "X",
   winner: false,
+  strikeType: null,
 };
 
 const slice = createSlice({
@@ -28,6 +30,8 @@ const slice = createSlice({
         }
         return item;
       });
+      state.strikeType = Winner(state.gridFrame);
+      state.winner = state.strikeType !== null ? !state.winner : state.winner;
     },
   },
 });
