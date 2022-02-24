@@ -6,6 +6,8 @@ const initialState = {
     [null, null, null],
     [null, null, null],
   ],
+  nextMove: "X",
+  winner: false,
 };
 
 const slice = createSlice({
@@ -16,15 +18,12 @@ const slice = createSlice({
       let { row, column } = action.payload;
       state.gridFrame = state.gridFrame.map((item, index) => {
         if (index === row) {
-          console.log("item", item);
-          return item.map((itm, i) => {
-            console.log("itm", itm);
+          return item.map((value, i) => {
             if (i === column) {
-              if (itm === null) {
-                return (itm = "X");
-              }
+              value = state.nextMove;
+              state.nextMove = value === "X" ? "O" : "X";
             }
-            return itm;
+            return value;
           });
         }
         return item;
