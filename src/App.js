@@ -5,8 +5,7 @@ import { Grid } from "./features/counter/Grid";
 
 function App() {
   return (
-    <div className="App">
-      {/* <Counter /> */}
+    <div>
       <Grid />
     </div>
   );

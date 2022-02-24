@@ -17,9 +17,6 @@ export default function Tile({ row, column }) {
   const win = useSelector((state) => state.grid.winner);
   const strike = useSelector((state) => state.grid.strikeType);
 
-  if (win === true) {
-    console.log(`${value} won`);
-  }
   return (
     <>
       <TileContainer
