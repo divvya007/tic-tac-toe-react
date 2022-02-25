@@ -8,7 +8,8 @@ const TileContainer = styled.div`
   width: 70px;
   height: 90px;
   color: red;
-  text-decoration: "none";
+  text-decoration: ${(props) =>
+    props.textDecoration ? "line-through" : "none"};
 `;
 export default function Tile({ row, column }) {
   const dispatch = useDispatch();
@@ -19,13 +20,17 @@ export default function Tile({ row, column }) {
 
   return (
     <>
-      <TileContainer
-        onClick={() =>
-          value !== null ? "" : dispatch(playerMove({ row, column }))
-        }
-      >
-        {value}
-      </TileContainer>
+      {
+        <TileContainer
+          onClick={() =>
+            value !== null || win === true
+              ? ""
+              : dispatch(playerMove({ row, column }))
+          }
+        >
+          {value}
+        </TileContainer>
+      }
     </>
   );
 }

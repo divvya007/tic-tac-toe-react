@@ -50,9 +50,7 @@ export function Grid() {
           RESET GAME
         </button>
 
-        <div>
-          player wins: {win === true ? winningPlayer : "who is winning?"}{" "}
-        </div>
+        <div>player wins: {win === true ? winningPlayer : ""} </div>
       </TicTacToeBoxContainer>
     </>
   );

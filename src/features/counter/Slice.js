@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import counterSlice from "./counterSlice";
+
 import Winner from "./winner";
 const initialState = {
   gridFrame: [
@@ -18,7 +18,6 @@ const slice = createSlice({
   initialState,
   reducers: {
     playerMove: (state, action) => {
-      let playerValue = null;
       let { row, column } = action.payload;
       state.gridFrame = state.gridFrame.map((item, index) => {
         if (index === row) {
@@ -47,7 +46,9 @@ const slice = createSlice({
         }
         return item;
       });
+      state.nextMove = "X";
       state.playerName = null;
+      state.strikeType = null;
     },
   },
 });
