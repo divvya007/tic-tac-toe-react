@@ -18,6 +18,7 @@ const slice = createSlice({
   initialState,
   reducers: {
     playerMove: (state, action) => {
+      let playerValue = null;
       let { row, column } = action.payload;
       state.gridFrame = state.gridFrame.map((item, index) => {
         if (index === row) {
@@ -25,9 +26,6 @@ const slice = createSlice({
             if (i === column) {
               value = state.nextMove;
               state.nextMove = value === "X" ? "O" : "X";
-              if (state.winner === true) {
-                state.playerName = value;
-              }
             }
             return value;
           });
@@ -36,6 +34,8 @@ const slice = createSlice({
       });
       state.strikeType = Winner(state.gridFrame);
       state.winner = state.strikeType !== null ? !state.winner : state.winner;
+      state.playerName =
+        state.winner === true && state.nextMove === "X" ? "O" : "X";
     },
     resetButton: (state) => {
       state.gridFrame = state.gridFrame.map((item) => {
@@ -47,6 +47,7 @@ const slice = createSlice({
         }
         return item;
       });
+      state.playerName = null;
     },
   },
 });

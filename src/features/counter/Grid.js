@@ -26,7 +26,6 @@ export function Grid() {
   console.log(winningPlayer);
   const win = useSelector((state) => state.grid.winner);
   const move = useSelector((state) => state.grid.nextMove);
-  let value = "did someone win?";
 
   return (
     <>
@@ -51,7 +50,9 @@ export function Grid() {
           RESET GAME
         </button>
 
-        <div>player wins: {win === true ? winningPlayer : value} </div>
+        <div>
+          player wins: {win === true ? winningPlayer : "who is winning?"}{" "}
+        </div>
       </TicTacToeBoxContainer>
     </>
   );
