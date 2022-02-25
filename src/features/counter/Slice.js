@@ -10,6 +10,7 @@ const initialState = {
   nextMove: "X",
   winner: false,
   strikeType: null,
+  playerName: null,
 };
 
 const slice = createSlice({
@@ -24,6 +25,9 @@ const slice = createSlice({
             if (i === column) {
               value = state.nextMove;
               state.nextMove = value === "X" ? "O" : "X";
+              if (state.winner === true) {
+                state.playerName = value;
+              }
             }
             return value;
           });

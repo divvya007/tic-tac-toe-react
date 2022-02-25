@@ -88,4 +88,5 @@ export default function Winner(inputArray) {
     result = 8;
     return result;
   }
+  return result;
 }

@@ -16,9 +16,9 @@ export default function Tile({ row, column }) {
   const value = useSelector((state) => state.grid.gridFrame[row][column]);
   const win = useSelector((state) => state.grid.winner);
   const strike = useSelector((state) => state.grid.strikeType);
-  //   if (win) {
-  //     dispatch(resetButton());
+  //   if (win === true) {
   //     alert(`player ${value} won`);
+  //     dispatch(resetButton());
   //   }
 
   return (

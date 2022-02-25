@@ -21,8 +21,12 @@ const TicTacToeBoxContainer = styled.div`
 `;
 
 export function Grid() {
-  const move = useSelector((state) => state.grid.nextMove);
   const dispatch = useDispatch();
+  const winningPlayer = useSelector((state) => state.grid.playerName);
+  console.log(winningPlayer);
+  const win = useSelector((state) => state.grid.winner);
+  const move = useSelector((state) => state.grid.nextMove);
+  let value = "did someone win?";
 
   return (
     <>
@@ -46,6 +50,8 @@ export function Grid() {
         >
           RESET GAME
         </button>
+
+        <div>player wins: {win === true ? winningPlayer : value} </div>
       </TicTacToeBoxContainer>
     </>
   );
