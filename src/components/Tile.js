@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { playerMove } from "./Slice";
+import { playerMove } from "./../store/gameReducer.js";
 import { useSelector } from "react-redux";
 
 const TileContainer = styled.div`

@@ -1,10 +1,8 @@
 import React from "react";
-import { Grid } from "./features/counter/Grid";
+import { Grid } from "./components/Grid.js";
 
 function App() {
-  return (
-    <Grid />
-  );
+  return <Grid />;
 }
 
 export default App;

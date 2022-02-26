@@ -1,6 +1,4 @@
-// TODO: The name of the function should be camel case
-// The name of the function should be "getStrikeType"
-export default function Winner(inputArray) {
+export default function getStrikeType(inputArray) {
   let result = null;
   if (
     (inputArray[0][0] === "X" &&

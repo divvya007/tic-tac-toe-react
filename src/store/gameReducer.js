@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import Winner from "./winner";
+import getStrikeType from "./../utils/getStrikeType";
 
 const initialState = {
   gridFrame: [
@@ -14,7 +14,7 @@ const initialState = {
     1. "playerName" or the "winnerName" can be derived from next move, so no 
        need to save it separately
     2. "winner" name can be misleading 
-    3. Document the strike type
+   
   */
   winner: false,
   strikeType: null,
@@ -37,38 +37,25 @@ const handlePlayerMove = (state, action) => {
     }
     return item;
   });
-  state.strikeType = Winner(state.gridFrame);
+  state.strikeType = getStrikeType(state.gridFrame);
   state.winner = state.strikeType !== null ? !state.winner : state.winner;
   state.playerName =
     state.winner === true && state.nextMove === "X" ? "O" : "X";
-}
+};
 
 const handleResetGame = () => {
   return initialState;
-  // state.gridFrame = state.gridFrame.map((item) => {
-  //   if (item) {
-  //     return item.map((value) => {
-  //       value = null;
-  //       return value;
-  //     });
-  //   }
-  //   return item;
-  // });
-  // state.nextMove = "X";
-  // state.playerName = null;
-  // state.strikeType = null;
-  // state.winner = false;
-}
+};
 
-const slice = createSlice({
+const gameReducer = createSlice({
   name: "move",
   initialState,
   reducers: {
     playerMove: handlePlayerMove,
     resetButton: handleResetGame,
-  }
+  },
 });
 
-export const { playerMove, resetButton } = slice.actions;
+export const { playerMove, resetButton } = gameReducer.actions;
 
-export default slice.reducer;
+export default gameReducer.reducer;

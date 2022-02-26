@@ -1,7 +1,7 @@
 import Tile from "./Tile";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { resetButton } from "./Slice";
+import { resetButton } from "./../store/gameReducer.js";
 
 const Container = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ export function Grid() {
   const winningPlayer = useSelector((state) => state.grid.playerName);
   console.log(winningPlayer);
   const win = useSelector((state) => state.grid.winner);
-  const move = useSelector((state) => state.grid.nextMove);
+  const nextMove = useSelector((state) => state.grid.nextMove);
 
   return (
     <>
@@ -41,7 +41,7 @@ export function Grid() {
           <Tile row={2} column={1} />
           <Tile row={2} column={2} />
         </Container>
-        <NextMoveContainer>your next move is: {move}</NextMoveContainer>
+        <NextMoveContainer>your next move is: {nextMove}</NextMoveContainer>
         <button
           onClick={() => {
             dispatch(resetButton());
