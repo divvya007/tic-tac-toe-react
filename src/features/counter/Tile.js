@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { playerMove, resetButton } from "./Slice";
+import { playerMove } from "./Slice";
 import { useSelector } from "react-redux";
 
 const TileContainer = styled.div`
@@ -9,8 +9,7 @@ const TileContainer = styled.div`
   height: 90px;
   color: red;
 `;
-export default function Tile({ row, column, isButtonReset }) {
-  console.log(isButtonReset);
+export default function Tile({ row, column }) {
   const dispatch = useDispatch();
 
   const value = useSelector((state) => state.grid.gridFrame[row][column]);

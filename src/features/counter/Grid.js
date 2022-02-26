@@ -1,10 +1,7 @@
-// TODO: Move this file to "src/components/Grid.js"
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
-
-import { resetButton } from "./Slice";
 import Tile from "./Tile";
+import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { resetButton } from "./Slice";
 
 const Container = styled.div`
   display: flex;
@@ -13,11 +10,9 @@ const Container = styled.div`
   max-width: 250px;
   align-content: center;
 `;
-
 const NextMoveContainer = styled.div`
   text-align: center;
 `;
-
 const TicTacToeBoxContainer = styled.div`
   max-width: 250px;
   margin-left: 25%;
@@ -26,8 +21,6 @@ const TicTacToeBoxContainer = styled.div`
 `;
 
 export function Grid() {
-  const [isReset, setReset] = useState(false);
-
   const dispatch = useDispatch();
   const winningPlayer = useSelector((state) => state.grid.playerName);
   console.log(winningPlayer);
@@ -38,21 +31,20 @@ export function Grid() {
     <>
       <TicTacToeBoxContainer>
         <Container>
-          <Tile row={0} column={0} isButtonReset={isReset} />
-          <Tile row={0} column={1} isButtonReset={isReset} />
-          <Tile row={0} column={2} isButtonReset={isReset} />
-          <Tile row={1} column={0} isButtonReset={isReset} />
-          <Tile row={1} column={1} isButtonReset={isReset} />
-          <Tile row={1} column={2} isButtonReset={isReset} />
-          <Tile row={2} column={0} isButtonReset={isReset} />
-          <Tile row={2} column={1} isButtonReset={isReset} />
-          <Tile row={2} column={2} isButtonReset={isReset} />
+          <Tile row={0} column={0} />
+          <Tile row={0} column={1} />
+          <Tile row={0} column={2} />
+          <Tile row={1} column={0} />
+          <Tile row={1} column={1} />
+          <Tile row={1} column={2} />
+          <Tile row={2} column={0} />
+          <Tile row={2} column={1} />
+          <Tile row={2} column={2} />
         </Container>
         <NextMoveContainer>your next move is: {move}</NextMoveContainer>
         <button
           onClick={() => {
             dispatch(resetButton());
-            setReset(!isReset);
           }}
         >
           RESET GAME
