@@ -1,8 +1,10 @@
-import Tile from "./Tile";
-import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
-import { resetButton } from "./Slice";
+// TODO: Move this file to "src/components/Grid.js"
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
+
+import { resetButton } from "./Slice";
+import Tile from "./Tile";
 
 const Container = styled.div`
   display: flex;
@@ -11,9 +13,11 @@ const Container = styled.div`
   max-width: 250px;
   align-content: center;
 `;
+
 const NextMoveContainer = styled.div`
   text-align: center;
 `;
+
 const TicTacToeBoxContainer = styled.div`
   max-width: 250px;
   margin-left: 25%;

@@ -1,3 +1,5 @@
+// TODO: The name of the function should be camel case
+// The name of the function should be "getStrikeType"
 export default function Winner(inputArray) {
   let result = null;
   if (
