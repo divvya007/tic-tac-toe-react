@@ -9,7 +9,8 @@ const TileContainer = styled.div`
   height: 90px;
   color: red;
 `;
-export default function Tile({ row, column }) {
+export default function Tile({ row, column, isButtonReset }) {
+  console.log(isButtonReset);
   const dispatch = useDispatch();
 
   const value = useSelector((state) => state.grid.gridFrame[row][column]);
@@ -20,7 +21,6 @@ export default function Tile({ row, column }) {
   return (
     <>
       <TileContainer
-        style={{ textDecoration: "none" }}
         onClick={() =>
           value !== null || win === true
             ? ""

@@ -2,6 +2,7 @@ import Tile from "./Tile";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { resetButton } from "./Slice";
+import { useState } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -21,6 +22,8 @@ const TicTacToeBoxContainer = styled.div`
 `;
 
 export function Grid() {
+  const [isReset, setReset] = useState(false);
+
   const dispatch = useDispatch();
   const winningPlayer = useSelector((state) => state.grid.playerName);
   console.log(winningPlayer);
@@ -31,20 +34,21 @@ export function Grid() {
     <>
       <TicTacToeBoxContainer>
         <Container>
-          <Tile row={0} column={0} />
-          <Tile row={0} column={1} />
-          <Tile row={0} column={2} />
-          <Tile row={1} column={0} />
-          <Tile row={1} column={1} />
-          <Tile row={1} column={2} />
-          <Tile row={2} column={0} />
-          <Tile row={2} column={1} />
-          <Tile row={2} column={2} />
+          <Tile row={0} column={0} isButtonReset={isReset} />
+          <Tile row={0} column={1} isButtonReset={isReset} />
+          <Tile row={0} column={2} isButtonReset={isReset} />
+          <Tile row={1} column={0} isButtonReset={isReset} />
+          <Tile row={1} column={1} isButtonReset={isReset} />
+          <Tile row={1} column={2} isButtonReset={isReset} />
+          <Tile row={2} column={0} isButtonReset={isReset} />
+          <Tile row={2} column={1} isButtonReset={isReset} />
+          <Tile row={2} column={2} isButtonReset={isReset} />
         </Container>
         <NextMoveContainer>your next move is: {move}</NextMoveContainer>
         <button
           onClick={() => {
             dispatch(resetButton());
+            setReset(!isReset);
           }}
         >
           RESET GAME
