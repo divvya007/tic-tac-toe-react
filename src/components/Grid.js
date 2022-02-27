@@ -26,6 +26,18 @@ export function Grid() {
   const gameState = useSelector((state) => state.grid.gameState);
   const nextMove = useSelector((state) => state.grid.nextMove);
 
+  function isGameOver(gameState, nextMove) {
+    if (gameState === "won" && nextMove === "X") {
+      return "O";
+    }
+    if (gameState === "won" && nextMove === "O") {
+      return "X";
+    }
+    if (gameState === "draw") {
+      return "game draw";
+    }
+  }
+
   return (
     <>
       <TicTacToeBoxContainer>
@@ -51,13 +63,7 @@ export function Grid() {
 
         <div>
           player wins:
-          {gameState === "won" && nextMove === "X"
-            ? "O"
-            : gameState === "won" && nextMove === "O"
-            ? "X"
-            : gameState === "draw"
-            ? "game draw"
-            : ""}
+          {isGameOver(gameState, nextMove)}
         </div>
       </TicTacToeBoxContainer>
     </>
