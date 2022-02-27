@@ -55,6 +55,8 @@ export function Grid() {
             ? "O"
             : gameState === "won" && nextMove === "O"
             ? "X"
+            : gameState === "draw"
+            ? "game draw"
             : ""}
         </div>
       </TicTacToeBoxContainer>

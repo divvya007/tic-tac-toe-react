@@ -12,7 +12,6 @@ const initialState = {
   nextMove: "X",
   gameState: "inProgress",
   strikeType: null,
-  gameDraw: false,
 };
 
 const handlePlayerMove = (state, action) => {
@@ -30,9 +29,13 @@ const handlePlayerMove = (state, action) => {
     return item;
   });
   state.strikeType = getStrikeType(state.gridFrame);
-  state.gameDraw = isGameDraw(state.gridFrame);
 
-  state.gameState = state.strikeType !== null ? "won" : state.gameState;
+  if (state.strikeType !== null) {
+    state.gameState = "won";
+  }
+  if (isGameDraw(state.gridFrame)) {
+    state.gameState = "draw";
+  }
 };
 
 const handleResetGame = () => {
