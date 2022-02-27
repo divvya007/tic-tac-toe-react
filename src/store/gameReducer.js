@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import getStrikeType from "./../utils/getStrikeType";
+import isGameDraw from "../utils/isGameDraw";
 
 const initialState = {
   gridFrame: [
@@ -9,18 +10,9 @@ const initialState = {
     [null, null, null],
   ],
   nextMove: "X",
-  /* 
-  TODO: 
-    1. "playerName" or the "winnerName" can be derived from next move, so no 
-       need to save it separately
-    2. "winner" name can be misleading 
-   
-  */
-  winner: false,
+  gameState: "inProgress",
   strikeType: null,
-  playerName: null,
-
-  // gameState: inProgress | won | draw
+  gameDraw: false,
 };
 
 const handlePlayerMove = (state, action) => {
@@ -38,9 +30,9 @@ const handlePlayerMove = (state, action) => {
     return item;
   });
   state.strikeType = getStrikeType(state.gridFrame);
-  state.winner = state.strikeType !== null ? !state.winner : state.winner;
-  state.playerName =
-    state.winner === true && state.nextMove === "X" ? "O" : "X";
+  state.gameDraw = isGameDraw(state.gridFrame);
+
+  state.gameState = state.strikeType !== null ? "won" : state.gameState;
 };
 
 const handleResetGame = () => {

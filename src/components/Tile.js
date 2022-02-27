@@ -13,15 +13,13 @@ export default function Tile({ row, column }) {
   const dispatch = useDispatch();
 
   const value = useSelector((state) => state.grid.gridFrame[row][column]);
-  const win = useSelector((state) => state.grid.winner);
-  const strike = useSelector((state) => state.grid.strikeType);
-  const player = useSelector((state) => state.grid.playerName);
+  const gameState = useSelector((state) => state.grid.gameState);
 
   return (
     <>
       <TileContainer
         onClick={() =>
-          value !== null || win === true
+          value !== null || gameState === "won"
             ? ""
             : dispatch(playerMove({ row, column }))
         }
