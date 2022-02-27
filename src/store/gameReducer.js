@@ -33,7 +33,7 @@ const handlePlayerMove = (state, action) => {
   if (state.strikeType !== null) {
     state.gameState = "won";
   }
-  if (isGameDraw(state.gridFrame)) {
+  if (isGameDraw(state.gridFrame) && state.strikeType === null) {
     state.gameState = "draw";
   }
 };
