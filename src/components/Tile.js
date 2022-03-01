@@ -4,10 +4,10 @@ import { playerMove } from "./../store/gameReducer.js";
 import { useSelector } from "react-redux";
 
 const TileContainer = styled.div`
-  border: 2px solid pink;
+  border: 2px solid #497ca9;
   width: 70px;
   height: 90px;
-  color: red;
+  color: aliceblue;
 `;
 export default function Tile({ row, column }) {
   const dispatch = useDispatch();

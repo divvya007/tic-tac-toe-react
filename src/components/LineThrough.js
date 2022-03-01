@@ -6,7 +6,7 @@ const DisplayLine = styled.div`
 `;
 
 const DisplayLine1 = styled.div`
-  border: 2px solid blue;
+  border: 2px solid #e0339b;
   position: absolute;
   margin-top: 45px;
   margin-left: 14px;
@@ -16,7 +16,7 @@ const DisplayLine1 = styled.div`
 `;
 
 const DisplayLine2 = styled.div`
-  border: 2px solid blue;
+  border: 2px solid #e0339b;
   position: absolute;
   margin-top: 141px;
   margin-left: 14px;
@@ -24,7 +24,7 @@ const DisplayLine2 = styled.div`
   display: "block";
 `;
 const DisplayLine3 = styled.div`
-  border: 2px solid blue;
+  border: 2px solid #e0339b;
   position: absolute;
   margin-top: 232px;
   margin-left: 14px;
@@ -33,7 +33,7 @@ const DisplayLine3 = styled.div`
 `;
 
 const DisplayLine4 = styled.div`
-  border: 2px solid blue;
+  border: 2px solid #e0339b;
   position: absolute;
   margin-top: 140px;
   margin-left: -88px;
@@ -44,7 +44,7 @@ const DisplayLine4 = styled.div`
 `;
 
 const DisplayLine5 = styled.div`
-  border: 2px solid blue;
+  border: 2px solid #e0339b;
   position: absolute;
   margin-top: 140px;
   margin-left: -16px;
@@ -53,7 +53,7 @@ const DisplayLine5 = styled.div`
   transform: rotate(90deg);
 `;
 const DisplayLine6 = styled.div`
-  border: 2px solid blue;
+  border: 2px solid #e0339b;
   position: absolute;
   margin-top: 140px;
   margin-left: 56px;
@@ -64,7 +64,7 @@ const DisplayLine6 = styled.div`
 `;
 
 const DisplayLine7 = styled.div`
-  border: 2px solid blue;
+  border: 2px solid #e0339b;
   position: absolute;
   margin-top: 140px;
   margin-left: -56px;
@@ -72,7 +72,7 @@ const DisplayLine7 = styled.div`
   transform: rotate(51deg);
 `;
 const DisplayLine8 = styled.div`
-  border: 2px solid blue;
+  border: 2px solid #e0339b;
   position: absolute;
   margin-top: 140px;
   margin-left: -56px;

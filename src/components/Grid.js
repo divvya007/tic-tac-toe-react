@@ -13,12 +13,25 @@ const Container = styled.div`
 `;
 const NextMoveContainer = styled.div`
   text-align: center;
+  margin-top: 14px;
 `;
 const TicTacToeBoxContainer = styled.div`
   max-width: 250px;
   margin-left: 25%;
   margin-right: 25%;
   margin-top: 5%;
+`;
+
+const ResetGameButton = styled.button`
+  background-color: #00bcd4bf;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 60px;
+`;
+
+const WinningPlayerContainer = styled.div`
+  margin-top: 14px;
+  margin-left: 30px;
 `;
 
 export function Grid() {
@@ -56,18 +69,18 @@ export function Grid() {
           <Tile row={2} column={2} />
         </Container>
         <NextMoveContainer>your next move is: {nextMove}</NextMoveContainer>
-        <button
+        <ResetGameButton
           onClick={() => {
             dispatch(resetButton());
           }}
         >
           RESET GAME
-        </button>
+        </ResetGameButton>
 
-        <div>
+        <WinningPlayerContainer>
           player wins:
           {isGameOver(gameState, nextMove)}
-        </div>
+        </WinningPlayerContainer>
       </TicTacToeBoxContainer>
     </>
   );
