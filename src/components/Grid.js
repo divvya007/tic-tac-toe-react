@@ -2,6 +2,7 @@ import Tile from "./Tile";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { resetButton } from "./../store/gameReducer.js";
+import LineThrough from "./LineThrough";
 
 const Container = styled.div`
   display: flex;
@@ -25,6 +26,7 @@ export function Grid() {
 
   const gameState = useSelector((state) => state.grid.gameState);
   const nextMove = useSelector((state) => state.grid.nextMove);
+  const strikeType = useSelector((state) => state.grid.strikeType);
 
   function isGameOver(gameState, nextMove) {
     if (gameState === "won" && nextMove === "X") {
@@ -41,6 +43,7 @@ export function Grid() {
   return (
     <>
       <TicTacToeBoxContainer>
+        <LineThrough strikeType={strikeType}></LineThrough>
         <Container>
           <Tile row={0} column={0} />
           <Tile row={0} column={1} />
