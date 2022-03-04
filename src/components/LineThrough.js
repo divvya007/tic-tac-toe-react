@@ -1,9 +1,17 @@
-import styled from "styled-components";
-// import { useSelector, useDispatch } from "react-redux";
+import styled, { keyframes } from "styled-components";
 
 const DisplayLine = styled.div`
   display: "none";
 `;
+const rotate = keyframes`
+    from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(90deg);
+  }
+  `;
 
 const DisplayLine1 = styled.div`
   border: 2px solid #e0339b;
@@ -11,7 +19,6 @@ const DisplayLine1 = styled.div`
   margin-top: 45px;
   margin-left: 14px;
   width: 218px;
-
   display: "block";
 `;
 
@@ -39,7 +46,6 @@ const DisplayLine4 = styled.div`
   margin-left: -88px;
   width: 276px;
 
-  display: "block";
   transform: rotate(90deg);
 `;
 
@@ -71,6 +77,7 @@ const DisplayLine7 = styled.div`
   width: 359px;
   transform: rotate(51deg);
 `;
+
 const DisplayLine8 = styled.div`
   border: 2px solid #e0339b;
   position: absolute;
