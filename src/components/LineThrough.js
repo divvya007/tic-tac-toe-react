@@ -1,65 +1,61 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 const DisplayLine = styled.div`
   display: "none";
 `;
-const rotate = keyframes`
-    from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(90deg);
-  }
-  `;
 
 const DisplayLine1 = styled.div`
-  border: 2px solid #e0339b;
+  border: 1px solid #0fa;
   position: absolute;
   margin-top: 45px;
   margin-left: 14px;
   width: 218px;
   display: "block";
+  z-index: 1;
 `;
 
 const DisplayLine2 = styled.div`
-  border: 2px solid #e0339b;
+  border: 1px solid #0fa;
   position: absolute;
   margin-top: 141px;
   margin-left: 14px;
   width: 218px;
   display: "block";
+  z-index: 1;
 `;
 const DisplayLine3 = styled.div`
-  border: 2px solid #e0339b;
+  border: 1px solid #0fa;
   position: absolute;
   margin-top: 232px;
   margin-left: 14px;
   width: 218px;
   display: "block";
+  z-index: 1;
 `;
 
 const DisplayLine4 = styled.div`
-  border: 2px solid #e0339b;
+  border: 1px solid #0fa;
   position: absolute;
   margin-top: 140px;
   margin-left: -88px;
   width: 276px;
+  z-index: 1;
 
   transform: rotate(90deg);
 `;
 
 const DisplayLine5 = styled.div`
-  border: 2px solid #e0339b;
+  border: 1px solid #0fa;
   position: absolute;
   margin-top: 140px;
   margin-left: -16px;
   width: 276px;
   display: "block";
   transform: rotate(90deg);
+  z-index: 1;
 `;
 const DisplayLine6 = styled.div`
-  border: 2px solid #e0339b;
+  border: 1px solid #0fa;
   position: absolute;
   margin-top: 140px;
   margin-left: 56px;
@@ -67,19 +63,21 @@ const DisplayLine6 = styled.div`
 
   display: "block";
   transform: rotate(90deg);
+  z-index: 1;
 `;
 
 const DisplayLine7 = styled.div`
-  border: 2px solid #e0339b;
+  border: 1px solid #0fa;
   position: absolute;
   margin-top: 140px;
   margin-left: -56px;
   width: 359px;
   transform: rotate(51deg);
+  z-index: 1;
 `;
 
 const DisplayLine8 = styled.div`
-  border: 2px solid #e0339b;
+  border: 1px solid #0fa;
   position: absolute;
   margin-top: 140px;
   margin-left: -56px;
@@ -87,6 +85,7 @@ const DisplayLine8 = styled.div`
 
   display: "block";
   transform: rotate(128deg);
+  z-index: 1;
 `;
 
 export default function LineThrough({ strikeType }) {
