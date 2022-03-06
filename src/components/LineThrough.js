@@ -5,7 +5,8 @@ const DisplayLine = styled.div`
 `;
 
 const DisplayLine1 = styled.div`
-  border: 1px solid #0fa;
+  border: 2px solid #0fa;
+  height: 2px;
   position: absolute;
   margin-top: 45px;
   margin-left: 14px;
@@ -69,10 +70,10 @@ const DisplayLine6 = styled.div`
 const DisplayLine7 = styled.div`
   border: 1px solid #0fa;
   position: absolute;
-  margin-top: 140px;
+  margin-top: 134px;
   margin-left: -56px;
   width: 359px;
-  transform: rotate(51deg);
+  transform: rotate(50deg);
   z-index: 1;
 `;
 

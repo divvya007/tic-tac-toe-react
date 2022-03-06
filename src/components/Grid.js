@@ -17,8 +17,8 @@ const NextMoveContainer = styled.div`
 `;
 const TicTacToeBoxContainer = styled.div`
   max-width: 250px;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 42%;
+
   margin-top: 5%;
 `;
 

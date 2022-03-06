@@ -6,16 +6,16 @@ import SymbolO from "../DisplaySymbols/SymbolO";
 import SymbolX from "../DisplaySymbols/SymbolX";
 
 const TileContainer = styled.div`
-  border: 2px solid #497ca9;
-  width: 70px;
+  border: 2px solid #fbd357;
+  width: 75px;
   height: 90px;
-  color: aliceblue;
+  color: #fbd357;
+  box-shadow: 0 0 10px #fbd357;
 `;
 export default function Tile({ row, column }) {
   const dispatch = useDispatch();
 
   const value = useSelector((state) => state.grid.gridFrame[row][column]);
-  console.log(value);
   const gameState = useSelector((state) => state.grid.gameState);
   function handleDisplaySymbols() {
     if (value === "X") {

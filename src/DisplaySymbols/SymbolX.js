@@ -1,21 +1,24 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const StyleX = styled.div`
+const commonStyles = css`
   margin-left: 12px;
   margin-top: 45px;
   position: absolute;
-  border: 1px solid #e0339b;
-  transform: rotate(50deg);
+  border: 1px solid #fd5ec7;
   width: 45px;
+  box-shadow: 0 0 16px #fd5ec7;
+  height: 2px;
+  background-color: #fd5ec7;
+`;
+
+const StyleX = styled.div`
+  ${commonStyles}
+  transform: rotate(50deg);
 `;
 
 const StyleXReverse = styled.div`
-  margin-left: 12px;
-  margin-top: 45px;
-  position: absolute;
-  border: 1px solid #e0339b;
+  ${commonStyles}
   transform: rotate(128deg);
-  width: 45px;
 `;
 
 export default function SymbolX() {
