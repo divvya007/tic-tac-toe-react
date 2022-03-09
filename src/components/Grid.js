@@ -77,7 +77,7 @@ export function Grid() {
           RESET GAME
         </ResetGameButton>
 
-        <WinningPlayerContainer>
+        <WinningPlayerContainer data-testid="winning-player">
           player wins:
           {isGameOver(gameState, nextMove)}
         </WinningPlayerContainer>

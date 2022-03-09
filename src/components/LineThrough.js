@@ -93,21 +93,21 @@ export default function LineThrough({ strikeType }) {
   function handleOnStyledLine() {
     switch (strikeType) {
       case 1:
-        return <DisplayLine1 />;
+        return <DisplayLine1 data-testid={`strike-${strikeType}`} />;
       case 2:
-        return <DisplayLine2 />;
+        return <DisplayLine2 data-testid={`strike-${strikeType}`} />;
       case 3:
-        return <DisplayLine3 />;
+        return <DisplayLine3 data-testid={`strike-${strikeType}`} />;
       case 4:
-        return <DisplayLine4 />;
+        return <DisplayLine4 data-testid={`strike-${strikeType}`} />;
       case 5:
-        return <DisplayLine5 />;
+        return <DisplayLine5 data-testid={`strike-${strikeType}`} />;
       case 6:
-        return <DisplayLine6 />;
+        return <DisplayLine6 data-testid={`strike-${strikeType}`} />;
       case 7:
-        return <DisplayLine7 />;
+        return <DisplayLine7 data-testid={`strike-${strikeType}`} />;
       case 8:
-        return <DisplayLine8 />;
+        return <DisplayLine8 data-testid={`strike-${strikeType}`} />;
 
       default:
         <DisplayLine />;
