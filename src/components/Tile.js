@@ -29,6 +29,7 @@ export default function Tile({ row, column }) {
   return (
     <>
       <TileContainer
+        data-testid={`tile-${row}-${column}`}
         onClick={() =>
           value !== null || gameState === "won"
             ? ""
