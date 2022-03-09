@@ -90,8 +90,6 @@ const DisplayLine8 = styled.div`
 `;
 
 export default function LineThrough({ strikeType }) {
-  console.log(strikeType);
-
   function handleOnStyledLine() {
     switch (strikeType) {
       case 1:
