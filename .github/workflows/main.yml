@@ -42,7 +42,7 @@ jobs:
         run: npm test
 
       - name: start script
-        run: npm start
+        run: npm run build
 
       - name: run end to end tests
         run: npm run headless-test
