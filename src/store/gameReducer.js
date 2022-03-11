@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import getStrikeType from "./../utils/getStrikeType";
 import isGameDraw from "../utils/isGameDraw";
 
-const initialState = {
+export const initialState = {
   gridFrame: [
     [null, null, null],
     [null, null, null],

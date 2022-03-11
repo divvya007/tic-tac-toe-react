@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { playerMove } from "./../store/gameReducer.js";
+import { playerMove } from "./../../store/gameReducer.js";
 import { useSelector } from "react-redux";
-import SymbolO from "../DisplaySymbols/SymbolO";
-import SymbolX from "../DisplaySymbols/SymbolX";
+import SymbolO from "../../DisplaySymbols/SymbolO";
+import SymbolX from "../../DisplaySymbols/SymbolX";
 
 const TileContainer = styled.div`
   border: 2px solid #fbd357;
