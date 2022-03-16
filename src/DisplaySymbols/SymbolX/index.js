@@ -24,8 +24,8 @@ const StyleXReverse = styled.div`
 export default function SymbolX() {
   return (
     <>
-      <StyleX></StyleX>
-      <StyleXReverse></StyleXReverse>
+      <StyleX data-testid="styleX"></StyleX>
+      <StyleXReverse data-testid="styleXReverse"></StyleXReverse>
     </>
   );
 }

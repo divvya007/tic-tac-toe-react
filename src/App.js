@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "./components/Grid.js";
+import { Grid } from "./components/Grid";
 
 function App() {
   return <Grid />;
