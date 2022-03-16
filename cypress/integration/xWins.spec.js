@@ -10,7 +10,7 @@ beforeEach(() => {
   cy.get('[data-testid="tile-2-1"]').as("21");
   cy.get('[data-testid="tile-2-2"]').as("22");
   // for winning player container
-  cy.get('[data-testid="winning-player"]').as("winningPlayerContainer");
+  cy.get('[data-testid="winningPlayer"]').as("winningPlayerContainer");
 });
 
 describe("X and O winning scenarios", () => {
