@@ -1,8 +1,8 @@
-import Tile from "./Tile";
+import Tile from "../Tile/index.js";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { resetButton } from "./../store/gameReducer.js";
-import LineThrough from "./LineThrough";
+import { resetButton } from "../../store/gameReducer.js";
+import LineThrough from "./../LineThrough/index.js";
 
 const Container = styled.div`
   display: flex;
@@ -57,7 +57,7 @@ export function Grid() {
     <>
       <TicTacToeBoxContainer>
         <LineThrough strikeType={strikeType}></LineThrough>
-        <Container>
+        <Container data-testid="tileContainer">
           <Tile row={0} column={0} />
           <Tile row={0} column={1} />
           <Tile row={0} column={2} />
@@ -68,8 +68,11 @@ export function Grid() {
           <Tile row={2} column={1} />
           <Tile row={2} column={2} />
         </Container>
-        <NextMoveContainer>your next move is: {nextMove}</NextMoveContainer>
+        <NextMoveContainer data-testid="nextMoveContainer">
+          your next move is: {nextMove}
+        </NextMoveContainer>
         <ResetGameButton
+          data-testid="resetButton"
           onClick={() => {
             dispatch(resetButton());
           }}
@@ -77,7 +80,7 @@ export function Grid() {
           RESET GAME
         </ResetGameButton>
 
-        <WinningPlayerContainer data-testid="winning-player">
+        <WinningPlayerContainer data-testid="winningPlayer">
           player wins:
           {isGameOver(gameState, nextMove)}
         </WinningPlayerContainer>

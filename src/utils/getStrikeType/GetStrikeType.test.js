@@ -1,4 +1,4 @@
-import getStrikeType from "./utils/getStrikeType";
+import getStrikeType from ".";
 
 test("should return 1 for 00,01,02", () => {
   let mockGridX = [
