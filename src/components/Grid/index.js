@@ -23,15 +23,36 @@ const TicTacToeBoxContainer = styled.div`
 `;
 
 const ResetGameButton = styled.button`
+  height: 67px;
+  width: 145px;
   background-color: #00bcd4bf;
   cursor: pointer;
   margin-top: 10px;
   margin-left: 60px;
+  display: ${(props) =>
+    props.gameState === "won"
+      ? "block"
+      : props.gameState === "draw"
+      ? "block"
+      : "none"};
 `;
 
 const WinningPlayerContainer = styled.div`
-  margin-top: 14px;
+  position: absolute;
+  background-color: black;
+  text-align: center;
+  color: white;
+  width: 190px;
+  height: 190px;
+  margin-top: -350px;
   margin-left: 30px;
+  z-index: 10;
+  display: ${(props) =>
+    props.gameState === "won"
+      ? "block"
+      : props.gameState === "draw"
+      ? "block"
+      : "none"};
 `;
 
 export function Grid() {
@@ -72,6 +93,7 @@ export function Grid() {
           your next move is: {nextMove}
         </NextMoveContainer>
         <ResetGameButton
+          gameState={gameState}
           data-testid="resetButton"
           onClick={() => {
             dispatch(resetButton());
@@ -80,7 +102,10 @@ export function Grid() {
           RESET GAME
         </ResetGameButton>
 
-        <WinningPlayerContainer data-testid="winningPlayer">
+        <WinningPlayerContainer
+          gameState={gameState}
+          data-testid="winningPlayer"
+        >
           player wins:
           {isGameOver(gameState, nextMove)}
         </WinningPlayerContainer>

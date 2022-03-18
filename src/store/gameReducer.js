@@ -15,7 +15,6 @@ export const initialState = {
 };
 
 const handlePlayerMove = (state, action) => {
-  console.log("action.payload:", action.payload);
   let { row, column } = action.payload;
   state.gridFrame = state.gridFrame.map((item, index) => {
     if (index === row) {
