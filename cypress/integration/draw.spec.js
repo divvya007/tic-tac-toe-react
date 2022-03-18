@@ -27,7 +27,7 @@ describe("game draw no player wins the game", () => {
 
     cy.get("@winningPlayerContainer").contains("player wins:game draw");
 
-    cy.get("@12").click();
-    cy.get("@12").children().should("have.length", 2);
+    //  Nothing else should be clickable
+    cy.get("@winningPlayerContainer").should("be.visible");
   });
 });
