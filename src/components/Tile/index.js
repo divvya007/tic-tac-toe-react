@@ -10,7 +10,7 @@ const TileContainer = styled.div`
   width: 75px;
   height: 90px;
   color: #fbd357;
-  box-shadow: 0 0 10px #fbd357;
+  box-shadow: 0 0 25px #fbd357;
 `;
 export default function Tile({ row, column }) {
   const dispatch = useDispatch();

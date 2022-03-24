@@ -38,7 +38,7 @@ const DisplayLine4 = styled.div`
   border: 1px solid #0fa;
   position: absolute;
   margin-top: 140px;
-  margin-left: -88px;
+  margin-left: -94.5px;
   width: 276px;
   z-index: 1;
 
@@ -70,11 +70,15 @@ const DisplayLine6 = styled.div`
 const DisplayLine7 = styled.div`
   border: 1px solid #0fa;
   position: absolute;
-  margin-top: 134px;
-  margin-left: -56px;
-  width: 359px;
+  margin-left: -58px;
+  margin-top: 138px;
+  width: 362px;
   transform: rotate(50deg);
   z-index: 1;
+
+  /* top: 357px;
+    left: 645px;
+    width: 362px; */
 `;
 
 const DisplayLine8 = styled.div`
@@ -83,7 +87,6 @@ const DisplayLine8 = styled.div`
   margin-top: 140px;
   margin-left: -56px;
   width: 359px;
-
   display: "block";
   transform: rotate(128deg);
   z-index: 1;

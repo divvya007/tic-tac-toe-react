@@ -3,6 +3,8 @@ import styled, { keyframes } from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { resetButton } from "../../store/gameReducer.js";
 import LineThrough from "./../LineThrough/index.js";
+import SymbolX from "./../../DisplaySymbols/SymbolX/index.js";
+import SymbolO from "../../DisplaySymbols/SymbolO/index.js";
 
 const pulsingAnimation = keyframes`
 0% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
@@ -60,8 +62,8 @@ const NextMoveContainer = styled.div`
 `;
 const TicTacToeBoxContainer = styled.div`
   max-width: 250px;
-  margin-left: 42%;
   margin-top: 5%;
+  margin-left: 42%;
 `;
 
 const ResetGameButton = styled.button`
@@ -97,12 +99,13 @@ const ResetGameButton = styled.button`
   animation-name: ${FancyButton};
 
   cursor: pointer;
-  margin-top: 10px;
-  margin-left: 45px;
+  margin-top: 28px;
+  margin-left: 14px;
   color: white;
-  border-radius: 5px;
+  border-radius: 20px;
   color: black;
   font-weight: bolder;
+  z-index: 50;
 
   display: ${(props) =>
     props.gameState === "won"
@@ -114,18 +117,17 @@ const ResetGameButton = styled.button`
 
 const WinningPlayerContainer = styled.div`
   border-radius: 16px;
-  border: 2px solid #5679bd;
-  box-shadow: 0 0 16px #c864ef;
+  /* border: 2px solid #5679bd; */
+  /* box-shadow: 0 0 16px #c864ef; */
   animation: ${pulsingAnimation} 0.8s linear 1s infinite;
   position: absolute;
   background-color: black;
   text-align: center;
   color: #aea4c3f5;
   font-weight: 700;
-  width: 176px;
-  padding: 98px;
-  margin-top: -352px;
-  margin-left: -62px;
+  width: 187px;
+  padding: 32px;
+  top: 330px;
   z-index: 10;
   display: ${(props) =>
     props.gameState === "won"
@@ -133,6 +135,46 @@ const WinningPlayerContainer = styled.div`
       : props.gameState === "draw"
       ? "block"
       : "none"};
+
+  box-shadow: ${(props) =>
+    props.nextMove === "O"
+      ? "0 0 16px #28dcf3"
+      : props.nextMove === "X"
+      ? "0 0 16px #c864ef"
+      : "0 0 16px #86999d"};
+
+  border: ${(props) =>
+    props.nextMove === "O"
+      ? "2px solid #28dcf3"
+      : props.nextMove === "X"
+      ? "2px solid #c864ef"
+      : "2px solid #773fb5"};
+`;
+
+const StyledSymbolCommonContainer = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-content: center;
+`;
+const StyledSymbolXContainer = styled.div`
+  position: relative;
+  width: 52px;
+  top: 0px;
+  left: 47px;
+`;
+const StyledSymbolOContainer = styled.div`
+  position: relative;
+  top: 0px;
+  left: 57px;
+  width: 66px;
+  height: 74px;
+`;
+const WinsTextContainer = styled.div`
+  position: relative;
+  top: 17px;
+  width: fit-content;
+  left: 64px;
 `;
 
 export function Grid() {
@@ -144,13 +186,59 @@ export function Grid() {
 
   function isGameOver(gameState, nextMove) {
     if (gameState === "won" && nextMove === "X") {
-      return "O";
+      return (
+        <StyledSymbolCommonContainer>
+          <StyledSymbolOContainer>
+            <SymbolO />
+          </StyledSymbolOContainer>
+          <WinsTextContainer> Wins</WinsTextContainer>
+          <ResetGameButton
+            gameState={gameState}
+            nextMove={nextMove}
+            data-testid="resetButton"
+            onClick={() => {
+              dispatch(resetButton());
+            }}
+          >
+            RESET GAME
+          </ResetGameButton>
+        </StyledSymbolCommonContainer>
+      );
     }
     if (gameState === "won" && nextMove === "O") {
-      return "X";
+      return (
+        <StyledSymbolCommonContainer>
+          <StyledSymbolXContainer>
+            <SymbolX />
+          </StyledSymbolXContainer>
+          <WinsTextContainer>Wins</WinsTextContainer>
+          <ResetGameButton
+            gameState={gameState}
+            data-testid="resetButton"
+            onClick={() => {
+              dispatch(resetButton());
+            }}
+          >
+            RESET GAME
+          </ResetGameButton>
+        </StyledSymbolCommonContainer>
+      );
     }
     if (gameState === "draw") {
-      return "game draw";
+      return (
+        <StyledSymbolCommonContainer>
+          Game Draw
+          <ResetGameButton
+            gameState={gameState}
+            data-testid="resetButton"
+            onClick={() => {
+              dispatch(resetButton());
+            }}
+          >
+            RESET GAME
+          </ResetGameButton>
+        </StyledSymbolCommonContainer>
+      );
     }
   }
 
@@ -169,24 +257,15 @@ export function Grid() {
           <Tile row={2} column={1} />
           <Tile row={2} column={2} />
         </Container>
+
         <NextMoveContainer data-testid="nextMoveContainer">
           your next move is: {nextMove}
         </NextMoveContainer>
-        <ResetGameButton
-          gameState={gameState}
-          data-testid="resetButton"
-          onClick={() => {
-            dispatch(resetButton());
-          }}
-        >
-          RESET GAME
-        </ResetGameButton>
 
         <WinningPlayerContainer
           gameState={gameState}
           data-testid="winningPlayer"
         >
-          player wins:
           {isGameOver(gameState, nextMove)}
         </WinningPlayerContainer>
       </TicTacToeBoxContainer>
