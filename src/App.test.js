@@ -11,5 +11,5 @@ test("renders learn react link", () => {
     </Provider>
   );
 
-  expect(getByText(/player wins:/i)).toBeInTheDocument();
+  expect(getByText(/Next move:/i)).toBeInTheDocument();
 });

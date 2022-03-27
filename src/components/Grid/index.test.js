@@ -1,4 +1,11 @@
-import { render, screen, fireEvent, getNodeText } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  getNodeText,
+  within,
+  getByText,
+} from "@testing-library/react";
 import react from "react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -36,12 +43,8 @@ describe("testing the grid component", () => {
     let tileContainer = screen.getByTestId("tileContainer");
     expect(tileContainer.childNodes.length).toBe(9);
     // if it contains text in the nextMoveContainer
-    let nextMoveContainer = screen.getByTestId("nextMoveContainer");
-    expect(getNodeText(nextMoveContainer)).toBe("your next move is: X");
-
-    // contains reset button with reset game text
-    let resetGameButton = screen.getByTestId("resetButton");
-    expect(getNodeText(resetGameButton)).toBe("RESET GAME");
+    let nextMoveContainer = screen.getByTestId("styledXContainer");
+    expect(nextMoveContainer).toBeTruthy();
   });
 
   it("should mock a function", () => {
@@ -84,8 +87,13 @@ describe("testing the grid component", () => {
     );
     expect(store.getState().grid.gameState).toBe("won");
     expect(store.getState().grid.strikeType).toBe(3);
-    let winningPlayer = screen.getByTestId("winningPlayer");
-    expect(getNodeText(winningPlayer)).toBe("player wins:O");
+
+    let winningPlayerContainsWinBox = screen.getByTestId("winBox");
+    expect(winningPlayerContainsWinBox).toHaveTextContent("Wins");
+
+    // contains reset button with reset game text
+    let resetGameButton = screen.getByTestId("resetButton");
+    expect(getNodeText(resetGameButton)).toBe("RESET GAME");
   });
 
   it("should return thr gamestate to be draw", () => {
@@ -107,8 +115,12 @@ describe("testing the grid component", () => {
       </Provider>
     );
     expect(store.getState().grid.gameState).toBe("draw");
-    let winningPlayer = screen.getByTestId("winningPlayer");
-    expect(getNodeText(winningPlayer)).toBe("player wins:game draw");
+    let isGameDraw = screen.getByTestId("gameDraw");
+    expect(isGameDraw).toHaveTextContent("Game Draw");
+
+    // contains reset button with reset game text
+    let resetGameButton = screen.getByTestId("resetButton");
+    expect(getNodeText(resetGameButton)).toBe("RESET GAME");
   });
 
   it("onClick reset button", () => {
@@ -122,6 +134,27 @@ describe("testing the grid component", () => {
       nextMove: "O",
       gameState: "draw",
       strikeType: null,
+    });
+    render(
+      <Provider store={store}>
+        <Grid />
+      </Provider>
+    );
+    fireEvent.click(screen.getByTestId("resetButton"));
+    expect(store.getState().grid).toBe(initialState);
+  });
+
+  it("should show reset button and click to reset initial state when player wins", () => {
+    let store = createMockStore({
+      ...initialState,
+      gridFrame: [
+        [null, null, "X"],
+        [null, "X", "X"],
+        ["O", "O", "O"],
+      ],
+      gameState: "won",
+      nextMove: "X",
+      strikeType: 3,
     });
     render(
       <Provider store={store}>

@@ -27,8 +27,18 @@ describe("X and O winning scenarios", () => {
     // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    // 3. "player x wins" should be visible
-    cy.get("@winningPlayerContainer").contains("player wins:X");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of X is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="styledXContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow O to win for 1st row", () => {
@@ -46,8 +56,19 @@ describe("X and O winning scenarios", () => {
 
     // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
-    // 3. "player x wins" should be visible
-    cy.get("@winningPlayerContainer").contains("player wins:O");
+
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of O is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="circleContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 2nd row to win for X", () => {
@@ -57,12 +78,24 @@ describe("X and O winning scenarios", () => {
     cy.get("@01").click();
     cy.get("@12").click();
 
+    // 1. green line should appear on the first row
     cy.get("[data-testid=strike-2]").should("be.visible");
 
-    // Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:X");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of X is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="styledXContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 2nd row to win for O", () => {
@@ -75,10 +108,21 @@ describe("X and O winning scenarios", () => {
 
     // green line
     cy.get("[data-testid=strike-2]").should("be.visible");
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:O");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of O is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="circleContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 3rd row for X", () => {
@@ -89,10 +133,21 @@ describe("X and O winning scenarios", () => {
     cy.get("@22").click();
 
     cy.get("[data-testid=strike-3]").should("be.visible");
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:X");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of X is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="styledXContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 3rd row for O", () => {
@@ -103,12 +158,25 @@ describe("X and O winning scenarios", () => {
     cy.get("@12").click();
     cy.get("@22").click();
 
-    cy.get("@winningPlayerContainer").contains("player wins:O");
-
-    //  Nothing else should be clickable
-    cy.get("@winningPlayerContainer").should("be.visible");
+    // green line should be visible
 
     cy.get("[data-testid=strike-3]").should("be.visible");
+
+    // 2. Nothing else should be clickable
+    cy.get("@winningPlayerContainer").should("be.visible");
+
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of O is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="circleContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 4th row to win for X", () => {
@@ -119,11 +187,21 @@ describe("X and O winning scenarios", () => {
     cy.get("@20").click();
 
     cy.get("[data-testid=strike-4]").should("be.visible");
-
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:X");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of X is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="styledXContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 4th column to win for O", () => {
@@ -136,10 +214,21 @@ describe("X and O winning scenarios", () => {
 
     cy.get("[data-testid=strike-4]").should("be.visible");
 
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:O");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of O is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="circleContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 5th column to win for X", () => {
@@ -151,10 +240,21 @@ describe("X and O winning scenarios", () => {
 
     cy.get("[data-testid=strike-5]").should("be.visible");
 
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:X");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of X is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="styledXContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 5th column to win for O", () => {
@@ -166,11 +266,21 @@ describe("X and O winning scenarios", () => {
     cy.get("@21").click();
 
     cy.get("[data-testid=strike-5]").should("be.visible");
-
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:O");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of O is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="circleContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 6th column to win for X", () => {
@@ -182,10 +292,21 @@ describe("X and O winning scenarios", () => {
 
     cy.get("[data-testid=strike-6]").should("be.visible");
 
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:X");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of X is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="styledXContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 6th column to win for O", () => {
@@ -198,10 +319,21 @@ describe("X and O winning scenarios", () => {
 
     cy.get("[data-testid=strike-6]").should("be.visible");
 
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:O");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of O is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="circleContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 7th column to win for X", () => {
@@ -212,10 +344,21 @@ describe("X and O winning scenarios", () => {
     cy.get("@22").click();
 
     cy.get("[data-testid=strike-7]").should("be.visible");
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:X");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of X is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="styledXContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 7th column to win for O", () => {
@@ -228,10 +371,21 @@ describe("X and O winning scenarios", () => {
 
     cy.get("[data-testid=strike-7]").should("be.visible");
 
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:O");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of O is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="circleContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
   it("should allow 8th column to win for X", () => {
     cy.get("@02").click();
@@ -241,10 +395,21 @@ describe("X and O winning scenarios", () => {
     cy.get("@20").click();
 
     cy.get("[data-testid=strike-8]").should("be.visible");
-    //  Nothing else should be clickable
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:X");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of X is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="styledXContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 
   it("should allow 8th column to win for O", () => {
@@ -256,9 +421,21 @@ describe("X and O winning scenarios", () => {
     cy.get("@20").click();
 
     cy.get("[data-testid=strike-8]").should("be.visible");
-    //  Nothing else should be clickable
+
+    // 2. Nothing else should be clickable
     cy.get("@winningPlayerContainer").should("be.visible");
 
-    cy.get("@winningPlayerContainer").contains("player wins:O");
+    // 3. "reset button" should be visible
+    cy.get('[data-testid="resetButton"]').should("be.visible");
+    cy.get('[data-testid="resetButton"]').contains("RESET GAME");
+
+    // container of O is visible
+    cy.get("@winningPlayerContainer")
+      .get('[data-testid="circleContainer"]')
+      .should("be.visible");
+
+    // winning text box is visible
+    cy.get('[data-testid="winBox"]').should("be.visible");
+    cy.get('[data-testid="winBox"]').contains("Wins");
   });
 });

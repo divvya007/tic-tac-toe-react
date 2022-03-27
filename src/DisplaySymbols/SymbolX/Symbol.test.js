@@ -10,7 +10,7 @@ describe("render for symbol X", () => {
     let reverseSymbolX = screen.getByTestId("styleXReverse");
     expect(reverseSymbolX).toBeTruthy();
 
-    expect(styleX).toHaveStyle("transform: rotate(50deg)");
-    expect(reverseSymbolX).toHaveStyle("transform: rotate(128deg)");
+    expect(styleX).toHaveStyle("transform: rotate(45deg)");
+    expect(reverseSymbolX).toHaveStyle("transform: rotate(135deg)");
   });
 });

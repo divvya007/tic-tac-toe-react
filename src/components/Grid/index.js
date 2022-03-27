@@ -56,14 +56,29 @@ const Container = styled.div`
   max-width: 250px;
   align-content: center;
 `;
+
 const NextMoveContainer = styled.div`
-  text-align: center;
   margin-top: 14px;
+  display: flex;
+  flex-direction: row;
 `;
+
+const NextMoveTextBox = styled.div`
+  margin: auto;
+  padding: 6px;
+  font-style: italic;
+  font-size: larger;
+`;
+
 const TicTacToeBoxContainer = styled.div`
   max-width: 250px;
-  margin-top: 5%;
-  margin-left: 42%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const ResetGameButton = styled.button`
@@ -99,8 +114,7 @@ const ResetGameButton = styled.button`
   animation-name: ${FancyButton};
 
   cursor: pointer;
-  margin-top: 28px;
-  margin-left: 14px;
+  margin-top: 3px;
   color: white;
   border-radius: 20px;
   color: black;
@@ -117,8 +131,6 @@ const ResetGameButton = styled.button`
 
 const WinningPlayerContainer = styled.div`
   border-radius: 16px;
-  /* border: 2px solid #5679bd; */
-  /* box-shadow: 0 0 16px #c864ef; */
   animation: ${pulsingAnimation} 0.8s linear 1s infinite;
   position: absolute;
   background-color: black;
@@ -126,8 +138,10 @@ const WinningPlayerContainer = styled.div`
   color: #aea4c3f5;
   font-weight: 700;
   width: 187px;
-  padding: 32px;
-  top: 330px;
+  padding: 18px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
   display: ${(props) =>
     props.gameState === "won"
@@ -137,44 +151,29 @@ const WinningPlayerContainer = styled.div`
       : "none"};
 
   box-shadow: ${(props) =>
-    props.nextMove === "O"
+    props.nextMove === "X"
       ? "0 0 16px #28dcf3"
-      : props.nextMove === "X"
-      ? "0 0 16px #c864ef"
-      : "0 0 16px #86999d"};
+      : props.nextMove === "O"
+      ? "0 0 16px #fd5ec7"
+      : "0 0 16px #cddc39"};
 
   border: ${(props) =>
-    props.nextMove === "O"
-      ? "2px solid #28dcf3"
-      : props.nextMove === "X"
-      ? "2px solid #c864ef"
-      : "2px solid #773fb5"};
+    props.nextMove === "X"
+      ? "4px solid #28dcf3"
+      : props.nextMove === "O"
+      ? "4px solid #fd5ec7"
+      : "4px solid #3f51b5"};
 `;
 
 const StyledSymbolCommonContainer = styled.div`
   display: flex;
-  position: relative;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
 `;
-const StyledSymbolXContainer = styled.div`
-  position: relative;
-  width: 52px;
-  top: 0px;
-  left: 47px;
-`;
-const StyledSymbolOContainer = styled.div`
-  position: relative;
-  top: 0px;
-  left: 57px;
-  width: 66px;
-  height: 74px;
-`;
+
 const WinsTextContainer = styled.div`
-  position: relative;
-  top: 17px;
-  width: fit-content;
-  left: 64px;
+  width: 80px;
+  font-size: large;
 `;
 
 export function Grid() {
@@ -188,10 +187,8 @@ export function Grid() {
     if (gameState === "won" && nextMove === "X") {
       return (
         <StyledSymbolCommonContainer>
-          <StyledSymbolOContainer>
-            <SymbolO />
-          </StyledSymbolOContainer>
-          <WinsTextContainer> Wins</WinsTextContainer>
+          <SymbolO />
+          <WinsTextContainer data-testid="winBox">Wins</WinsTextContainer>
           <ResetGameButton
             gameState={gameState}
             nextMove={nextMove}
@@ -208,10 +205,8 @@ export function Grid() {
     if (gameState === "won" && nextMove === "O") {
       return (
         <StyledSymbolCommonContainer>
-          <StyledSymbolXContainer>
-            <SymbolX />
-          </StyledSymbolXContainer>
-          <WinsTextContainer>Wins</WinsTextContainer>
+          <SymbolX />
+          <WinsTextContainer data-testid="winBox">Wins</WinsTextContainer>
           <ResetGameButton
             gameState={gameState}
             data-testid="resetButton"
@@ -227,7 +222,7 @@ export function Grid() {
     if (gameState === "draw") {
       return (
         <StyledSymbolCommonContainer>
-          Game Draw
+          <div data-testid="gameDraw">Game Draw</div>
           <ResetGameButton
             gameState={gameState}
             data-testid="resetButton"
@@ -258,16 +253,18 @@ export function Grid() {
           <Tile row={2} column={2} />
         </Container>
 
-        <NextMoveContainer data-testid="nextMoveContainer">
-          your next move is: {nextMove}
-        </NextMoveContainer>
-
         <WinningPlayerContainer
           gameState={gameState}
+          nextMove={nextMove}
           data-testid="winningPlayer"
         >
           {isGameOver(gameState, nextMove)}
         </WinningPlayerContainer>
+
+        <NextMoveContainer data-testid="nextMoveContainer">
+          <NextMoveTextBox>Next move:</NextMoveTextBox>
+          {nextMove === "X" ? <SymbolX /> : nextMove === "O" ? <SymbolO /> : ""}
+        </NextMoveContainer>
       </TicTacToeBoxContainer>
     </>
   );
