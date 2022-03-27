@@ -5,27 +5,26 @@ const DisplayLine = styled.div`
 `;
 
 const DisplayLine1 = styled.div`
-  border: 2px solid #0fa;
-  height: 2px;
+  border: 3px solid #0fa;
   position: absolute;
   margin-top: 45px;
-  margin-left: 14px;
-  width: 218px;
+  margin-left: 6px;
+  width: 230px;
   display: "block";
   z-index: 1;
 `;
 
 const DisplayLine2 = styled.div`
-  border: 1px solid #0fa;
+  border: 3px solid #0fa;
   position: absolute;
-  margin-top: 141px;
-  margin-left: 14px;
-  width: 218px;
+  margin-top: 138px;
+  margin-left: 6px;
+  width: 230px;
   display: "block";
   z-index: 1;
 `;
 const DisplayLine3 = styled.div`
-  border: 1px solid #0fa;
+  border: 3px solid #0fa;
   position: absolute;
   margin-top: 232px;
   margin-left: 14px;
@@ -35,57 +34,51 @@ const DisplayLine3 = styled.div`
 `;
 
 const DisplayLine4 = styled.div`
-  border: 1px solid #0fa;
+  border: 3px solid #0fa;
   position: absolute;
-  margin-top: 140px;
-  margin-left: -88px;
-  width: 276px;
+  margin-top: 138px;
+  margin-left: -158.5px;
+  width: 272px;
   z-index: 1;
-
   transform: rotate(90deg);
 `;
 
 const DisplayLine5 = styled.div`
-  border: 1px solid #0fa;
+  border: 3px solid #0fa;
   position: absolute;
-  margin-top: 140px;
-  margin-left: -16px;
-  width: 276px;
+  margin-top: 138px;
+  width: 272px;
   display: "block";
   transform: rotate(90deg);
   z-index: 1;
 `;
 const DisplayLine6 = styled.div`
-  border: 1px solid #0fa;
+  border: 3px solid #0fa;
   position: absolute;
-  margin-top: 140px;
-  margin-left: 56px;
-  width: 276px;
-
+  margin-top: 138px;
+  margin-left: 158px;
+  width: 272px;
   display: "block";
   transform: rotate(90deg);
   z-index: 1;
 `;
 
 const DisplayLine7 = styled.div`
-  border: 1px solid #0fa;
+  border: 3px solid #0fa;
   position: absolute;
-  margin-top: 134px;
-  margin-left: -56px;
-  width: 359px;
+  margin-top: 138px;
+  width: 362px;
   transform: rotate(50deg);
   z-index: 1;
 `;
 
 const DisplayLine8 = styled.div`
-  border: 1px solid #0fa;
+  border: 3px solid #0fa;
   position: absolute;
   margin-top: 140px;
-  margin-left: -56px;
   width: 359px;
-
   display: "block";
-  transform: rotate(128deg);
+  transform: rotate(130deg);
   z-index: 1;
 `;
 

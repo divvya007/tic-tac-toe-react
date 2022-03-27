@@ -46,7 +46,7 @@ describe("testing the Tile component", () => {
     );
 
     let tileEl = screen.getByTestId("tile-0-0");
-    expect(tileEl.childNodes.length).toBe(2);
+    expect(tileEl.childNodes.length).toBe(1);
   });
 
   it("renders the Tile component and display O when present in state", () => {
@@ -129,7 +129,7 @@ describe("testing the Tile component", () => {
     fireEvent.click(screen.getByTestId("tile-0-0"));
 
     // expect
-    expect(screen.getByTestId("tile-0-0").childNodes.length).toBe(2);
+    expect(screen.getByTestId("tile-0-0").childNodes.length).toBe(1);
     expect(store.getState().grid.gridFrame[0][0]).toBe("X");
   });
 });

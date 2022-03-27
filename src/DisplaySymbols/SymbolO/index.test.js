@@ -9,7 +9,7 @@ describe("testing symbol component O", () => {
 
     let circleDom = screen.getByTestId("circle");
     expect(circleDom).toBeTruthy();
-    expect(circleDom).toHaveStyle("width: 45px;");
+    expect(circleDom).toHaveStyle("width: 36px;");
     expect(circleDom).toHaveStyle("border-radius: 25px;");
     expect(circleDom).toHaveStyle("background-color: transparent;");
   });
