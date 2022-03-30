@@ -5,6 +5,10 @@ import { resetButton } from "../../store/gameReducer.js";
 import LineThrough from "./../LineThrough/index.js";
 import SymbolX from "./../../DisplaySymbols/SymbolX/index.js";
 import SymbolO from "../../DisplaySymbols/SymbolO/index.js";
+import { useRef } from "react";
+import audioSound from "./../../audioSound/winningSound.mp3";
+import audioSound1 from "./../../audioSound/loseGameOver.mp3";
+import audioSound2 from "./../../audioSound/reset.mp3";
 
 const pulsingAnimation = keyframes`
 0% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
@@ -178,6 +182,21 @@ const WinsTextContainer = styled.div`
 
 export function Grid() {
   const dispatch = useDispatch();
+  const audioRef = useRef();
+  const audioRefGameDraw = useRef();
+  const audioRefGameReset = useRef();
+
+  function handlePlayWinSound() {
+    audioRef.current.play();
+  }
+
+  function handlePlayLoseSound() {
+    audioRefGameDraw.current.play();
+  }
+
+  function handlePlayGameResetSound() {
+    audioRefGameReset.current.play();
+  }
 
   const gameState = useSelector((state) => state.grid.gameState);
   const nextMove = useSelector((state) => state.grid.nextMove);
@@ -185,6 +204,7 @@ export function Grid() {
 
   function isGameOver(gameState, nextMove) {
     if (gameState === "won" && nextMove === "X") {
+      handlePlayWinSound();
       return (
         <StyledSymbolCommonContainer>
           <SymbolO />
@@ -194,6 +214,7 @@ export function Grid() {
             nextMove={nextMove}
             data-testid="resetButton"
             onClick={() => {
+              handlePlayGameResetSound();
               dispatch(resetButton());
             }}
           >
@@ -203,6 +224,7 @@ export function Grid() {
       );
     }
     if (gameState === "won" && nextMove === "O") {
+      handlePlayWinSound();
       return (
         <StyledSymbolCommonContainer>
           <SymbolX />
@@ -211,6 +233,7 @@ export function Grid() {
             gameState={gameState}
             data-testid="resetButton"
             onClick={() => {
+              handlePlayGameResetSound();
               dispatch(resetButton());
             }}
           >
@@ -220,6 +243,7 @@ export function Grid() {
       );
     }
     if (gameState === "draw") {
+      handlePlayLoseSound();
       return (
         <StyledSymbolCommonContainer>
           <div data-testid="gameDraw">Game Draw</div>
@@ -227,6 +251,7 @@ export function Grid() {
             gameState={gameState}
             data-testid="resetButton"
             onClick={() => {
+              handlePlayGameResetSound();
               dispatch(resetButton());
             }}
           >
@@ -240,6 +265,17 @@ export function Grid() {
   return (
     <>
       <TicTacToeBoxContainer>
+        <audio type="audio/mp3" ref={audioRef} src={audioSound}></audio>
+        <audio
+          type="audio/mp3"
+          ref={audioRefGameDraw}
+          src={audioSound1}
+        ></audio>
+        <audio
+          type="audio/mp3"
+          ref={audioRefGameReset}
+          src={audioSound2}
+        ></audio>
         <LineThrough strikeType={strikeType}></LineThrough>
         <Container data-testid="tileContainer">
           <Tile row={0} column={0} />
