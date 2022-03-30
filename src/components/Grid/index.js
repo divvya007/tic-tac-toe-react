@@ -207,7 +207,7 @@ export function Grid() {
   }
 
   function onPlayAudio() {
-    if (audioClickRef.current) {
+    if (audioClickRef.current && audioClickRef.current.play) {
       audioClickRef.current.play();
     }
   }
