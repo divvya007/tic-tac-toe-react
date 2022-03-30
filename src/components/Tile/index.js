@@ -17,8 +17,16 @@ const TileContainer = styled.div`
   justify-content: center;
 `;
 
-export default function Tile({ row, column }) {
+export default function Tile({ row, column, onPlayAudio }) {
   const dispatch = useDispatch();
+
+  function handleDispatch() {
+    if (value !== null || gameState === "won") {
+      return "";
+    }
+    onPlayAudio();
+    return dispatch(playerMove({ row, column }));
+  }
 
   const value = useSelector((state) => state.grid.gridFrame[row][column]);
   const gameState = useSelector((state) => state.grid.gameState);
@@ -35,11 +43,7 @@ export default function Tile({ row, column }) {
     <>
       <TileContainer
         data-testid={`tile-${row}-${column}`}
-        onClick={() =>
-          value !== null || gameState === "won"
-            ? ""
-            : dispatch(playerMove({ row, column }))
-        }
+        onClick={handleDispatch}
       >
         {handleDisplaySymbols(value)}
       </TileContainer>

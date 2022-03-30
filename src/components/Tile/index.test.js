@@ -74,7 +74,7 @@ describe("testing the Tile component", () => {
 
     render(
       <Provider store={store}>
-        <Tile row={0} column={0} />
+        <Tile row={0} column={0} onPlayAudio={() => {}} />
       </Provider>
     );
 
