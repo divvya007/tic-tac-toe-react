@@ -4,8 +4,6 @@ import { playerMove } from "./../../store/gameReducer.js";
 import { useSelector } from "react-redux";
 import SymbolO from "./../../DisplaySymbols/SymbolO/index.js";
 import SymbolX from "./../../DisplaySymbols/SymbolX/index.js";
-import audioSound from "./../../audioSound/playerMove.mp3";
-import { useRef } from "react";
 
 const TileContainer = styled.div`
   border: 2px solid #fbd357;
@@ -19,19 +17,14 @@ const TileContainer = styled.div`
   justify-content: center;
 `;
 
-export default function Tile({ row, column }) {
+export default function Tile({ row, column, onPlayAudio }) {
   const dispatch = useDispatch();
-  const audioRef = useRef();
-
-  const handleAudioPlay = () => {
-    audioRef.current.play();
-  };
 
   function handleDispatch() {
     if (value !== null || gameState === "won") {
       return "";
     }
-    handleAudioPlay();
+    onPlayAudio();
     return dispatch(playerMove({ row, column }));
   }
 
@@ -48,7 +41,6 @@ export default function Tile({ row, column }) {
 
   return (
     <>
-      <audio type="audio/mp3" ref={audioRef} src={audioSound}></audio>
       <TileContainer
         data-testid={`tile-${row}-${column}`}
         onClick={handleDispatch}

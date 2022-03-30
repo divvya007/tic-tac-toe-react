@@ -6,9 +6,10 @@ import LineThrough from "./../LineThrough/index.js";
 import SymbolX from "./../../DisplaySymbols/SymbolX/index.js";
 import SymbolO from "../../DisplaySymbols/SymbolO/index.js";
 import { useRef } from "react";
-import audioSound from "./../../audioSound/winningSound.mp3";
-import audioSound1 from "./../../audioSound/loseGameOver.mp3";
-import audioSound2 from "./../../audioSound/reset.mp3";
+import audioSoundWin from "./../../audioSound/winningSound.mp3";
+import audioSoundGameDraw from "./../../audioSound/loseGameOver.mp3";
+import audioSoundReset from "./../../audioSound/reset.mp3";
+import audioSoundClick from "./../../audioSound/playerMove.mp3";
 
 const pulsingAnimation = keyframes`
 0% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
@@ -185,17 +186,30 @@ export function Grid() {
   const audioRef = useRef();
   const audioRefGameDraw = useRef();
   const audioRefGameReset = useRef();
+  const audioClickRef = useRef();
 
   function handlePlayWinSound() {
-    audioRef.current.play();
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
   }
 
   function handlePlayLoseSound() {
-    audioRefGameDraw.current.play();
+    if (audioRefGameDraw.current) {
+      audioRefGameDraw.current.play();
+    }
   }
 
   function handlePlayGameResetSound() {
-    audioRefGameReset.current.play();
+    if (audioRefGameReset.current) {
+      audioRefGameReset.current.play();
+    }
+  }
+
+  function onPlayAudio() {
+    if (audioClickRef.current) {
+      audioClickRef.current.play();
+    }
   }
 
   const gameState = useSelector((state) => state.grid.gameState);
@@ -265,28 +279,33 @@ export function Grid() {
   return (
     <>
       <TicTacToeBoxContainer>
-        <audio type="audio/mp3" ref={audioRef} src={audioSound}></audio>
+        <audio type="audio/mp3" ref={audioRef} src={audioSoundWin}></audio>
+        <audio
+          type="audio/mp3"
+          ref={audioClickRef}
+          src={audioSoundClick}
+        ></audio>
         <audio
           type="audio/mp3"
           ref={audioRefGameDraw}
-          src={audioSound1}
+          src={audioSoundGameDraw}
         ></audio>
         <audio
           type="audio/mp3"
           ref={audioRefGameReset}
-          src={audioSound2}
+          src={audioSoundReset}
         ></audio>
         <LineThrough strikeType={strikeType}></LineThrough>
         <Container data-testid="tileContainer">
-          <Tile row={0} column={0} />
-          <Tile row={0} column={1} />
-          <Tile row={0} column={2} />
-          <Tile row={1} column={0} />
-          <Tile row={1} column={1} />
-          <Tile row={1} column={2} />
-          <Tile row={2} column={0} />
-          <Tile row={2} column={1} />
-          <Tile row={2} column={2} />
+          <Tile row={0} column={0} onPlayAudio={onPlayAudio} />
+          <Tile row={0} column={1} onPlayAudio={onPlayAudio} />
+          <Tile row={0} column={2} onPlayAudio={onPlayAudio} />
+          <Tile row={1} column={0} onPlayAudio={onPlayAudio} />
+          <Tile row={1} column={1} onPlayAudio={onPlayAudio} />
+          <Tile row={1} column={2} onPlayAudio={onPlayAudio} />
+          <Tile row={2} column={0} onPlayAudio={onPlayAudio} />
+          <Tile row={2} column={1} onPlayAudio={onPlayAudio} />
+          <Tile row={2} column={2} onPlayAudio={onPlayAudio} />
         </Container>
 
         <WinningPlayerContainer
