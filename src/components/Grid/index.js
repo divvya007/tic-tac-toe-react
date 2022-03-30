@@ -66,6 +66,9 @@ const NextMoveContainer = styled.div`
   margin-top: 14px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
 `;
 
 const NextMoveTextBox = styled.div`
