@@ -1,5 +1,5 @@
 ## [Tic Tac Toe Game](https://t-divya.github.io/tic-tac-toe-react/)
-click here to play [game link- click me](https://divvya007.github.io/tic-tac-toe-react/)
+click here to play [game link- click me](https://t-divya.github.io/tic-tac-toe-react/)
 
 ### About this game
 
